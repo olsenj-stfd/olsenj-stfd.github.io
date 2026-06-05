@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jessica L. Olsen · A Community-First Charter</title>
+    <meta name="description" content="Jessica L. Olsen, community-first operator and builder. Eleven years putting communities at the center of how public capital gets spent. Stanford GSB MSx '26. Let's compare notes.">
+    <meta property="og:title" content="Jessica L. Olsen · A Community-First Charter">
+    <meta property="og:description" content="Community-first operator and builder. Eleven years putting communities at the center of how public capital gets spent. Let's compare notes.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;600&family=Architects+Daughter&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-paper: #F4F1EA;
+            --ink-cardinal: #8C1515;
+            --ink-faded: rgba(140, 21, 21, 0.6);
+            --ink-micro: rgba(140, 21, 21, 0.4);
+            --marker-dusty-pink: rgba(219, 114, 114, 0.7);
+
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'EB Garamond', serif;
+            --font-sys: 'Manrope', sans-serif;
+            --font-marker: 'Architects Daughter', cursive;
+
+            --hairline: 1px solid var(--ink-cardinal);
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 8rem;
+
+            --grid-max: 1400px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-paper);
+            color: var(--ink-cardinal);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        a { color: inherit; }
+
+        #grain-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: multiply;
+            opacity: 0.4;
+        }
+
+        .wrapper {
+            max-width: var(--grid-max);
+            margin: 0 auto;
+            padding: var(--space-md);
+            position: relative;
+            z-index: 1;
+        }
+
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--ink-faded);
+            margin-bottom: var(--space-xl);
+        }
+
+        .seal-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px; height: 160px;
+        }
+
+        .seal-svg {
+            width: 100%; height: 100%;
+            stroke: var(--ink-cardinal);
+            stroke-width: 0.75;
+            fill: none;
+        }
+
+        .header-flank {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            text-align: center;
+        }
+        .header-flank.left { text-align: left; }
+        .header-flank.right { text-align: right; }
+
+        .sys-text {
+            font-family: var(--font-sys);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            position: relative;
+        }
+
+        .hero-title .main-word {
+            display: block;
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 10vw, 11rem);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            line-height: 0.95;
+        }
+
+        .hero-title .sub-word {
+            display: block;
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 7vw, 8rem);
+            font-style: italic;
+            margin-top: -0.4em;
+            margin-left: 10%;
+        }
+
+        .hero-lede {
+            font-family: var(--font-body);
+            font-size: 1.25rem;
+            max-width: 46ch;
+            margin: var(--space-lg) auto 0;
+            text-align: center;
+            font-style: italic;
+            color: var(--ink-cardinal);
+        }
+
+        .hero-cta {
+            margin-top: var(--space-md);
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .marginalia-vertical {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            transform-origin: center;
+            white-space: nowrap;
+        }
+        .marginalia-vertical.left { left: -4rem; }
+        .marginalia-vertical.right {
+            right: -4rem;
+            transform: translateY(-50%) rotate(90deg);
+        }
+
+        .resume-grid {
+            display: grid;
+            grid-template-columns: 2.4fr 7fr 2.6fr;
+            gap: var(--space-lg);
+            align-items: start;
+        }
+
+        .meta-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            position: sticky;
+            top: var(--space-md);
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .meta-value { font-size: 1.1rem; }
+
+        .meta-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin-top: var(--space-sm);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--ink-faded);
+        }
+
+        .cv-section {
+            margin-bottom: var(--space-xl);
+            position: relative;
+            scroll-margin-top: var(--space-md);
+        }
+
+        .cv-header {
+            display: flex;
+            align-items: baseline;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+            border-bottom: var(--hairline);
+            padding-bottom: var(--space-xs);
+        }
+        .cv-number {
+            font-family: var(--font-sys);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+        }
+        .cv-title { font-size: 2rem; }
+
+        .display {
+            font-family: var(--font-display);
+            font-weight: 400;
+        }
+
+        .cv-entry {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+            position: relative;
+        }
+
+        .cv-date {
+            font-family: var(--font-sys);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: var(--ink-faded);
+            padding-top: 0.5rem;
+        }
+
+        .cv-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.25rem;
+            font-family: var(--font-display);
+            font-weight: 500;
+        }
+        .cv-content h4 {
+            font-family: var(--font-sys);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            color: var(--ink-faded);
+            text-transform: uppercase;
+        }
+        .cv-content p {
+            text-align: justify;
+            font-size: 1.125rem;
+            line-height: 1.6;
+            font-variant-numeric: oldstyle-nums;
+            margin-bottom: 1em;
+        }
+        .cv-content p:last-child { margin-bottom: 0; }
+
+        .ledger {
+            list-style: none;
+            margin-top: var(--space-sm);
+            border-top: 1px solid var(--ink-micro);
+        }
+        .ledger li {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: var(--space-sm);
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--ink-micro);
+            align-items: baseline;
+            font-variant-numeric: oldstyle-nums;
+        }
+        .ledger li .item-name { font-size: 1.15rem; }
+        .ledger li .item-figure {
+            font-family: var(--font-sys);
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            color: var(--ink-faded);
+            text-transform: uppercase;
+            text-align: right;
+        }
+
+        .index-box {
+            border: var(--hairline);
+            padding: var(--space-sm);
+            position: sticky;
+            top: var(--space-md);
+        }
+        .index-box-title {
+            text-align: center;
+            border-bottom: 1px solid var(--ink-faded);
+            padding-bottom: var(--space-xs);
+            margin-bottom: var(--space-sm);
+        }
+        .index-list {
+            list-style: none;
+            font-family: var(--font-sys);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+        }
+        .index-list li {
+            border-bottom: 1px solid var(--ink-micro);
+        }
+        .index-list li:last-child { border-bottom: 0; }
+        .index-list a {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            text-decoration: none;
+        }
+        .index-list a:hover { color: var(--marker-dusty-pink); }
+
+        .btn-link {
+            font-family: var(--font-sys);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-decoration: none;
+            color: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--ink-faded);
+            padding-bottom: 0.35rem;
+            width: fit-content;
+            transition: color 0.15s ease, border-color 0.15s ease;
+        }
+        .btn-link:hover { color: var(--marker-dusty-pink); border-color: var(--marker-dusty-pink); }
+        .btn-link .arrow { font-family: var(--font-body); }
+
+        .btn-solid {
+            font-family: var(--font-sys);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-decoration: none;
+            color: var(--bg-paper);
+            background: var(--ink-cardinal);
+            padding: 0.85rem 1.75rem;
+            display: inline-block;
+            transition: background 0.15s ease;
+        }
+        .btn-solid:hover { background: #6e1010; }
+        .btn-outline {
+            font-family: var(--font-sys);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-decoration: none;
+            color: var(--ink-cardinal);
+            border: var(--hairline);
+            padding: 0.85rem 1.75rem;
+            display: inline-block;
+            transition: background 0.15s ease, color 0.15s ease;
+        }
+        .btn-outline:hover { background: var(--ink-cardinal); color: var(--bg-paper); }
+
+        .correspondence {
+            border: var(--hairline);
+            padding: var(--space-lg);
+            text-align: center;
+        }
+        .correspondence .quill {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            line-height: 1.4;
+            max-width: 28ch;
+            margin: 0 auto var(--space-md);
+        }
+        .correspondence p {
+            max-width: 44ch;
+            margin: 0 auto var(--space-md);
+            font-size: 1.1rem;
+        }
+
+        .doc-footer {
+            margin-top: var(--space-xl);
+            padding-top: var(--space-md);
+            border-top: var(--hairline);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .footer-sign {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.4rem;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .annotation {
+            position: absolute;
+            font-family: var(--font-marker);
+            color: var(--marker-dusty-pink);
+            font-size: 0.9rem;
+            pointer-events: none;
+            z-index: 5;
+            white-space: nowrap;
+        }
+
+        .marker-bracket { position: relative; display: inline-block; }
+        .marker-bracket::before, .marker-bracket::after {
+            content: '';
+            position: absolute;
+            top: -2px; bottom: -2px;
+            width: 10px;
+            border: 2px solid var(--marker-dusty-pink);
+            border-radius: 4px;
+            opacity: 0.8;
+        }
+        .marker-bracket::before { left: -8px; border-right: 0; transform: rotate(-2deg); }
+        .marker-bracket::after { right: -8px; border-left: 0; transform: rotate(2deg); }
+
+        .marker-circle { position: relative; z-index: 1; }
+        .marker-circle::before {
+            content: '';
+            position: absolute;
+            top: -10%; left: -5%;
+            width: 110%; height: 120%;
+            border: 2px solid var(--marker-dusty-pink);
+            border-radius: 50% 45% 52% 48% / 45% 52% 48% 50%;
+            transform: rotate(-1.5deg);
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        @media (max-width: 1024px) {
+            .resume-grid { grid-template-columns: 1fr 3fr; }
+            .grid-sidebar-right { display: none; }
+        }
+        @media (max-width: 768px) {
+            .resume-grid { grid-template-columns: 1fr; }
+            .marginalia-vertical { display: none; }
+            .cv-entry { grid-template-columns: 1fr; gap: var(--space-xs); }
+            .cv-date { padding-top: 0; }
+            .meta-list { position: static; }
+            .annotation { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="grain-canvas" width="1280" height="832"></canvas>
+
+    <div class="wrapper">
+        <header class="doc-header">
+            <div class="header-flank left sys-text">
+                <span>Personal Charter</span>
+                <span style="color: var(--ink-faded)">Rev. 01.00</span>
+            </div>
+
+            <div class="seal-container">
+                <svg class="seal-svg" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="50" cy="70" rx="45" ry="65"></ellipse>
+                    <ellipse cx="50" cy="70" rx="41" ry="61" stroke-dasharray="2 4" stroke-width="0.5"></ellipse>
+                    <path d="M50 110 V80 M50 80 L35 55 M50 80 L65 55 M35 55 L25 40 M35 55 L45 35 M65 55 L55 35 M65 55 L75 40"></path>
+                    <circle cx="25" cy="40" r="1.5" fill="var(--ink-cardinal)"></circle>
+                    <circle cx="45" cy="35" r="1.5" fill="var(--ink-cardinal)"></circle>
+                    <circle cx="55" cy="35" r="1.5" fill="var(--ink-cardinal)"></circle>
+                    <circle cx="75" cy="40" r="1.5" fill="var(--ink-cardinal)"></circle>
+                    <circle cx="50" cy="25" r="1.5" fill="var(--ink-cardinal)"></circle>
+                    <path d="M45 35 L50 25 L55 35"></path>
+                </svg>
+            </div>
+
+            <div class="header-flank right sys-text">
+                <span>Stanford GSB</span>
+                <span style="color: var(--ink-faded)">MSx · MMXXVI</span>
+            </div>
+        </header>
+
+        <section class="hero-title">
+            <div class="sys-text marginalia-vertical left">Operator · Builder · Convener</div>
+            <span class="main-word display">Jessica</span>
+            <span class="sub-word display">Olsen</span>
+            <div class="sys-text marginalia-vertical right">A Community-First Charter</div>
+            <div class="annotation" style="top: 8%; right: 14%; transform: rotate(5deg);">Let's compare notes!</div>
+
+            <p class="hero-lede">Eleven years putting communities at the center of how the public's money gets spent. Now building tools for the people the system forgets.</p>
+            <div class="hero-cta">
+                <a href="#correspondence" class="btn-solid">Start a conversation</a>
+                <a href="#progress" class="btn-outline">See what we're building</a>
+            </div>
+        </section>
+
+        <main class="resume-grid">
+            <aside class="grid-sidebar-left">
+                <ul class="meta-list">
+                    <li class="meta-item">
+                        <span class="meta-label sys-text">Vocation</span>
+                        <span class="meta-value">Operator &amp; Founder</span>
+                    </li>
+                    <li class="meta-item">
+                        <span class="meta-label sys-text">Standing</span>
+                        <span class="meta-value">Open to conversation</span>
+                    </li>
+                    <li class="meta-item">
+                        <span class="meta-label sys-text">Locale</span>
+                        <span class="meta-value">Stanford &rarr; SF Bay</span>
+                    </li>
+                    <li class="meta-item">
+                        <span class="meta-label sys-text">Institution</span>
+                        <span class="meta-value">Stanford GSB, MSx '26</span>
+                    </li>
+
+                    <li class="meta-links">
+                        <!-- RESUME: drop resume.pdf into this folder, or update href -->
+                        <a href="resume.pdf" class="btn-link" download>Download Dossier <span class="arrow">&darr;</span></a>
+                        <a href="mailto:olsenj@stanford.edu" class="btn-link">Email <span class="arrow">&rarr;</span></a>
+                        <!-- LINKEDIN: replace with your profile URL -->
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="btn-link">LinkedIn <span class="arrow">&rarr;</span></a>
+                        <!-- SUBSTACK: replace with your Substack URL -->
+                        <a href="https://substack.com/" target="_blank" rel="noopener" class="btn-link">Substack <span class="arrow">&rarr;</span></a>
+                    </li>
+                </ul>
+            </aside>
+
+            <article class="grid-main">
+                <!-- 01 ETHOS -->
+                <section class="cv-section" id="ethos">
+                    <header class="cv-header">
+                        <span class="cv-number">01</span>
+                        <h2 class="cv-title display">Foundational Ethos</h2>
+                    </header>
+
+                    <div class="cv-entry">
+                        <div class="cv-date">PRINCIPLE I</div>
+                        <div class="cv-content">
+                            <h3><span class="marker-circle">Community is the infrastructure</span></h3>
+                            <h4>The architecture of belonging</h4>
+                            <div class="annotation" style="left: -96px; top: 6px; transform: rotate(-10deg);">This first.</div>
+                            <p>The work that matters is rarely the work of one person. For most of a decade, at the <span class="marker-bracket">San Joaquin Valley Air Pollution Control District</span>, the job was to clean the air for four million people in one of the most polluted, most politically complex basins in the country. None of it moved without the community in the room.</p>
+                            <p>So the operating belief is simple: community members are the experts in their own lives. The job of an operator is to build the conditions for that expertise to lead, not to fund a community and talk past it. Every figure on the ledger below started as a room full of people who did not yet trust each other.</p>
+                            <div class="annotation" style="right: -28px; bottom: -10px; transform: rotate(3deg); font-size: 0.8rem;">See the record &gt;&gt;</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 02 THE RECORD -->
+                <section class="cv-section" id="record">
+                    <header class="cv-header">
+                        <span class="cv-number">02</span>
+                        <h2 class="cv-title display">The Record</h2>
+                    </header>
+
+                    <div class="cv-entry">
+                        <div class="cv-date">2021&ndash;2025</div>
+                        <div class="cv-content">
+                            <h3>The <span class="marker-bracket">Participatory Budgeting Tool</span></h3>
+                            <h4>Community Strategies &amp; Resources · Valley Air District</h4>
+                            <p>The work I am proudest of is the smallest. Together with partner agencies, NGOs, industry, and residents, we built the first participatory budgeting tool for California Climate Investment funds, putting San Joaquin Valley communities in the design seat for clean-air investments in their own neighborhoods. It did in months what years of meetings could not: it got the agency and the community onto the same page, and it was adopted as the program-wide standard.</p>
+                        </div>
+                    </div>
+
+                    <div class="cv-entry">
+                        <div class="cv-date">2021&ndash;2025</div>
+                        <div class="cv-content">
+                            <h3>A <span class="marker-circle">$140M+</span> community portfolio</h3>
+                            <h4>Director, Community Strategies &amp; Resources</h4>
+                            <p>We stood up a new impact team from the ground up and stewarded a portfolio of more than $140M across 200+ projects, owning the full arc from strategy to deployment to performance measurement to legislative reporting. Reach ran beyond SNAP, using CalEnviroScreen, AB 1550, and SB 535 to find California's priority populations. The measured result: 8,000 tons of air pollution removed, and a flagship air-purifier program that reached 20,000 homes.</p>
+                        </div>
+                    </div>
+
+                    <div class="cv-entry">
+                        <div class="cv-date">2024</div>
+                        <div class="cv-content">
+                            <h3>A <span class="marker-bracket">$1M federal grant</span>, written for the Valley</h3>
+                            <h4>U.S. EPA · Inflation Reduction Act</h4>
+                            <p>Authored alongside community partners and won: a successful $1M federal proposal funded through the Inflation Reduction Act, with the dollars pointed squarely at the frontline neighborhoods that needed them.</p>
+                        </div>
+                    </div>
+
+                    <ul class="ledger">
+                        <li><span class="item-name">Community Engagement Summit, convened from the ground up</span><span class="item-figure">200+ leaders</span></li>
+                        <li><span class="item-name">California Pesticide Notification System, supported to statewide adoption</span><span class="item-figure">Statewide</span></li>
+                        <li><span class="item-name">Research &amp; Science organization, three teams held together</span><span class="item-figure">25 people</span></li>
+                        <li><span class="item-name">Doolittle Institute, cross-sector tech transfer for AFRL</span><span class="item-figure">650 stakeholders</span></li>
+                        <li><span class="item-name">Recognized as top-performing director</span><span class="item-figure">2024</span></li>
+                    </ul>
+                </section>
+
+                <!-- 03 IN PROGRESS -->
+                <section class="cv-section" id="progress">
+                    <header class="cv-header">
+                        <span class="cv-number">03</span>
+                        <h2 class="cv-title display">In Progress</h2>
+                    </header>
+
+                    <div class="cv-entry">
+                        <div class="cv-date">PROTOTYPE</div>
+                        <div class="cv-content">
+                            <h3>Beside</h3>
+                            <h4>Digital health for the second patient</h4>
+                            <div class="annotation" style="right: -20px; top: 0; transform: rotate(4deg);">Ask for a demo!</div>
+                            <p>A mobile-first platform for the partners, parents, and children loving someone through addiction, mental illness, an eating disorder, or grief. Most digital health is built for the diagnosed. Beside is the consumer-scale realization of an RCT-validated digital therapeutic for everyone else in the room.</p>
+                        </div>
+                    </div>
+
+                    <div class="cv-entry">
+                        <div class="cv-date">PROTOTYPE</div>
+                        <div class="cv-content">
+                            <h3>StoryKeeper</h3>
+                            <h4>For kids whose parents work away</h4>
+                            <p>A storytelling app for the children of people who work far from home (military, pilots, consultants). Parents record story branches in their own voice; kids choose what happens next and hear the real recording. The whole point is that the parent is still present, never simulated.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 04 DISPATCHES -->
+                <section class="cv-section" id="dispatches">
+                    <header class="cv-header">
+                        <span class="cv-number">04</span>
+                        <h2 class="cv-title display">Latest Dispatches</h2>
+                    </header>
+
+                    <div class="cv-entry">
+                        <div class="cv-date">ONGOING</div>
+                        <div class="cv-content">
+                            <h3>Notes from the work</h3>
+                            <h4>Community-centered design · public capital · building</h4>
+                            <p>Essays on putting communities at the center of how money gets spent, and on building things for the people usually left off the spreadsheet. New writing lands on the Substack.</p>
+                            <!-- SUBSTACK: replace href with your real Substack URL -->
+                            <a href="https://substack.com/" target="_blank" rel="noopener" class="btn-outline" style="margin-top: 0.5rem;">Read the Substack</a>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <aside class="grid-sidebar-right">
+                <div class="index-box">
+                    <div class="index-box-title sys-text">System Index</div>
+                    <ul class="index-list">
+                        <li><a href="#ethos"><span>Ethos</span><span>&sect;1.0</span></a></li>
+                        <li><a href="#record"><span class="marker-circle">The Record</span><span>&sect;2.0</span></a></li>
+                        <li><a href="#progress"><span>In Progress</span><span>&sect;3.0</span></a></li>
+                        <li><a href="#dispatches"><span>Dispatches</span><span>&sect;4.0</span></a></li>
+                        <li><a href="#correspondence"><span>Correspondence</span><span>&sect;5.0</span></a></li>
+                    </ul>
+                    <div class="annotation" style="bottom: -26px; left: 0; transform: rotate(4deg);">Start at §2.0.</div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- 05 CORRESPONDENCE -->
+        <section class="cv-section" id="correspondence" style="margin-top: var(--space-xl);">
+            <header class="cv-header">
+                <span class="cv-number">05</span>
+                <h2 class="cv-title display">Correspondence</h2>
+            </header>
+            <div class="correspondence">
+                <p class="quill">If you are working on the same things I am, community voice, public capital, health for the people the system overlooks, I would love an excuse to talk. Are you free for a coffee?</p>
+                <p style="color: var(--ink-faded);">No agenda. I am finishing a fellowship at Stanford GSB and always looking for a reason to drive up to SF. I just like meeting people who do this work.</p>
+                <div class="hero-cta" style="margin-top: var(--space-md);">
+                    <a href="mailto:olsenj@stanford.edu" class="btn-solid">olsenj@stanford.edu</a>
+                    <!-- LINKEDIN: replace href -->
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="btn-outline">Connect on LinkedIn</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="doc-footer sys-text">
+            <div>
+                <span class="footer-sign">In community,</span><br>
+                <span style="color: var(--ink-faded)">Jessica L. Olsen</span>
+            </div>
+            <div style="text-align: right;">
+                <span>End of Document</span><br>
+                <span>[EOF]</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('grain-canvas');
+            const gl = canvas.getContext('webgl', { alpha: true, antialias: false, depth: false });
+            if (!gl) return;
+            const vsSource = `attribute vec2 position; void main() { gl_Position = vec4(position, 0.0, 1.0); }`;
+            const fsSource = `precision highp float; uniform vec2 resolution; float random(vec2 st) { return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123); } void main() { float noise = random(gl_FragCoord.xy); gl_FragColor = vec4(0.0, 0.0, 0.0, noise * 0.15); }`;
+            function createShader(gl, type, source) {
+                const shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                return shader;
+            }
+            const program = gl.createProgram();
+            gl.attachShader(program, createShader(gl, gl.VERTEX_SHADER, vsSource));
+            gl.attachShader(program, createShader(gl, gl.FRAGMENT_SHADER, fsSource));
+            gl.linkProgram(program);
+            gl.useProgram(program);
+            const positions = new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]);
+            const positionBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
+            const posLoc = gl.getAttribLocation(program, 'position');
+            gl.enableVertexAttribArray(posLoc);
+            gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+            const resLoc = gl.getUniformLocation(program, 'resolution');
+            function render() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                gl.viewport(0, 0, canvas.width, canvas.height);
+                gl.uniform2f(resLoc, canvas.width, canvas.height);
+                gl.drawArrays(gl.TRIANGLES, 0, 6);
+            }
+            window.addEventListener('resize', render);
+            render();
+        });
+    </script>
+</body>
+</html>
