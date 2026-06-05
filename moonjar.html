@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moonjar Stories</title>
+<meta name="description" content="The real stories you tell. The real voice your child knows.">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-paper: #FAF5EE;
+    --grid-line: #F0D6C3;
+    --ink: #4A3C31;
+    --orange: #FF7B00;
+    --blue: #3E92CC;
+    --yellow: #FFC928;
+    --green: #4CAF50;
+    --pink: #FFA4B6;
+    --white: #FFFFFF;
+    --border-w: 3px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--bg-paper);
+    font-family: 'Fredoka', sans-serif;
+    color: var(--ink);
+    line-height: 1.5;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 24px 24px;
+    overflow-x: hidden;
+  }
+  .page { max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  .mono { font-family: 'Space Mono', monospace; }
+
+  .section {
+    background: var(--white);
+    border: var(--border-w) solid var(--ink);
+    border-radius: var(--radius-lg);
+    box-shadow: 6px 6px 0 var(--ink);
+    padding: 40px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  /* Hero */
+  .hero { text-align: center; padding: 60px 40px; }
+  .ribbon {
+    background: var(--orange);
+    border: var(--border-w) solid var(--ink);
+    padding: 16px 40px;
+    display: inline-block;
+    position: relative;
+    box-shadow: 4px 4px 0 var(--ink);
+    margin-bottom: 32px;
+  }
+  .ribbon::before, .ribbon::after {
+    content: ''; position: absolute; top: 8px;
+    width: 20px; height: calc(100% - 16px);
+    background: var(--blue);
+    border: var(--border-w) solid var(--ink);
+  }
+  .ribbon::before { left: -24px; }
+  .ribbon::after { right: -24px; }
+  .ribbon h1 {
+    color: var(--yellow);
+    text-shadow:
+      -2px -2px 0 var(--ink),
+       2px -2px 0 var(--ink),
+      -2px  2px 0 var(--ink),
+       2px  2px 0 var(--ink);
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .hero-tag {
+    font-size: 1.5rem;
+    margin: 24px auto;
+    max-width: 520px;
+  }
+  .hero-tag em { color: var(--orange); font-style: italic; }
+  .cta-row {
+    display: inline-flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; justify-content: center;
+  }
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    background: var(--green);
+    color: var(--white);
+    border: var(--border-w) solid var(--ink);
+    border-radius: 99px;
+    text-decoration: none;
+    box-shadow: 0 4px 0 var(--ink);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--ink); }
+  .btn-secondary { background: var(--white); color: var(--ink); }
+  .btn-yellow { background: var(--yellow); color: var(--ink); }
+
+  /* Typography */
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  h2 em { color: var(--orange); font-style: italic; }
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.7;
+    margin-bottom: 28px;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--white);
+    border: var(--border-w) solid var(--ink);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .card-blue { background: var(--blue); }
+  .card-pink { background: var(--pink); }
+  .card-yellow { background: var(--yellow); }
+  .card-green { background: var(--green); }
+  .card-orange { background: var(--orange); color: var(--white); }
+  .card-orange .mono { color: var(--white); opacity: 0.8; }
+
+  /* Grids */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 24px 0; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
+
+  /* Stat cards */
+  .stat-card { text-align: center; padding: 28px 20px; }
+  .stat-number { font-size: 2.5rem; font-weight: 700; display: block; margin: 8px 0; line-height: 1; }
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .feature-card { padding: 28px; }
+  .feature-number {
+    width: 40px; height: 40px;
+    background: var(--ink); color: var(--white);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; margin-bottom: 12px;
+  }
+  .feature-card p { font-size: 0.95rem; line-height: 1.5; }
+
+  /* Comparison */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0; }
+  .compare-col h3 {
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: var(--ink);
+  }
+  .compare-item {
+    padding: 12px 0;
+    border-bottom: 2px dashed var(--grid-line);
+  }
+  .compare-item:last-child { border-bottom: none; }
+
+  /* Tagline pull */
+  .pull {
+    font-size: 1.4rem;
+    font-style: italic;
+    text-align: center;
+    padding: 28px;
+    background: var(--yellow);
+    border: var(--border-w) solid var(--ink);
+    border-radius: var(--radius-md);
+    margin-top: 24px;
+  }
+  .pull.dark { background: var(--ink); color: var(--white); font-style: normal; }
+  .pull.orange { background: var(--orange); color: var(--white); font-style: normal; }
+
+  /* Research panels */
+  .research { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+  .research .card { font-size: 0.95rem; line-height: 1.5; }
+  .research em { background: rgba(255,255,255,0.6); padding: 0 4px; font-style: normal; font-weight: 600; }
+  .cite {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: 12px;
+    display: block;
+  }
+
+  /* Vision timeline */
+  .timeline { display: flex; gap: 16px; margin: 24px 0; flex-wrap: wrap; }
+  .timeline-item {
+    flex: 1; min-width: 180px;
+    padding: 24px 16px; text-align: center;
+  }
+  .timeline-item .stage {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .timeline-item .big {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 4px 0;
+  }
+  .timeline-item .who {
+    font-size: 0.85rem;
+    margin-top: 8px;
+  }
+
+  /* Team */
+  .team-card { display: flex; gap: 28px; align-items: flex-start; padding: 40px; }
+  .avatar {
+    width: 120px; height: 120px;
+    background: var(--pink);
+    border: var(--border-w) solid var(--ink);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; font-weight: 700;
+    box-shadow: 4px 4px 0 var(--ink);
+    flex-shrink: 0;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 24px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .section { padding: 28px 20px; }
+    .ribbon h1 { font-size: 1.8rem; }
+    .ribbon { padding: 14px 28px; }
+    h2 { font-size: 1.5rem; }
+    .grid-3, .grid-2, .grid-4, .compare, .research { grid-template-columns: 1fr; }
+    .team-card { flex-direction: column; align-items: center; text-align: center; padding: 28px 20px; }
+    .timeline { flex-direction: column; }
+    .hero { padding: 40px 20px; }
+    .hero-tag { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Hero -->
+  <section class="section hero">
+    <div class="ribbon"><h1>Moonjar Stories</h1></div>
+    <p class="hero-tag">
+      The <em>real stories</em> you tell.<br>
+      The real voice your child knows.
+    </p>
+    <div class="cta-row">
+      <a href="https://story-keeper-eight.vercel.app" class="btn">Try the app</a>
+      <a href="#why" class="btn btn-secondary">Why it matters</a>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="section" id="why">
+    <h2>The problem</h2>
+    <p class="subtitle">15M+ U.S. families face regular parental absence.</p>
+
+    <div class="grid-3">
+      <div class="card card-blue stat-card">
+        <span class="stat-label">Airline pilots</span>
+        <span class="stat-number">30%</span>
+        <span class="stat-label">divorce rate &mdash; 3-6 nights away each week</span>
+      </div>
+      <div class="card card-pink stat-card">
+        <span class="stat-label">Military families</span>
+        <span class="stat-number">1.3M</span>
+        <span class="stat-label">families with children &mdash; behavioral effects documented</span>
+      </div>
+      <div class="card card-green stat-card">
+        <span class="stat-label">Night-shift workers</span>
+        <span class="stat-number">6&times;</span>
+        <span class="stat-label">higher divorce rate &mdash; miss bedtime entirely</span>
+      </div>
+    </div>
+
+    <div class="pull orange">
+      Bedtime is the most critical bonding ritual &mdash; and the first thing lost when a parent is gone.
+    </div>
+  </section>
+
+  <!-- Why existing solutions fall short -->
+  <section class="section">
+    <h2>Why existing solutions <em>fall short</em></h2>
+
+    <div class="compare">
+      <div class="compare-col">
+        <h3 style="background: var(--blue);">Voice-cloning apps</h3>
+        <div class="compare-item">AI generates stories you never told</div>
+        <div class="compare-item">Synthetic approximation of your voice</div>
+        <div class="compare-item">Replaces the parent</div>
+        <div class="compare-item">Child hears fiction</div>
+      </div>
+      <div class="compare-col">
+        <h3 style="background: var(--green);">Moonjar Stories</h3>
+        <div class="compare-item"><strong>Captures stories you actually tell</strong></div>
+        <div class="compare-item"><strong>Your real voice, your real words</strong></div>
+        <div class="compare-item"><strong>Preserves the parent</strong></div>
+        <div class="compare-item"><strong>Child hears memory</strong></div>
+      </div>
+    </div>
+
+    <div class="pull">
+      One replaces you. The other keeps you.
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section class="section">
+    <h2>The solution</h2>
+    <p class="subtitle" style="color: var(--orange); font-style: italic;">One tap. Tell your story. We handle the rest.</p>
+
+    <div class="grid-2">
+      <div class="card card-blue feature-card">
+        <div class="feature-number">1</div>
+        <h3>Record naturally</h3>
+        <p>Hit record and tell your story. We capture both voices &mdash; yours and your child&rsquo;s questions.</p>
+      </div>
+      <div class="card card-pink feature-card">
+        <div class="feature-number">2</div>
+        <h3>World builds itself</h3>
+        <p>AI extracts characters, places, and themes automatically. No manual tagging.</p>
+      </div>
+      <div class="card card-green feature-card">
+        <div class="feature-number">3</div>
+        <h3>Prompts emerge</h3>
+        <p>After a few stories, suggestions come from <em>your</em> patterns &mdash; not generic AI content.</p>
+      </div>
+      <div class="card card-orange feature-card">
+        <div class="feature-number">4</div>
+        <h3>Connection persists</h3>
+        <p>When you&rsquo;re traveling, your child hears <em>you</em>. The real you. Not a synthetic approximation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Theory of Change -->
+  <section class="section" id="research">
+    <h2>Theory of change</h2>
+    <p class="subtitle">Why a real parent voice does what synthetic content cannot.</p>
+
+    <div class="research">
+      <div class="card card-blue">
+        <h3>A parent&rsquo;s voice does real biological work</h3>
+        <p>
+          A landmark 2010 study at the University of Wisconsin&ndash;Madison
+          (Seltzer, Ziegler &amp; Pollak) showed that when children in a
+          stressful situation heard their mother&rsquo;s voice &mdash; even by
+          phone &mdash; their cortisol dropped and oxytocin rose nearly the
+          same as if she were in the room. <em>Text messages did not produce
+          the effect.</em> The parent&rsquo;s voice itself is the medicine.
+        </p>
+        <span class="cite">Seltzer LJ, Ziegler TE, Pollak SD. Proc. R. Soc. B, 2010.</span>
+      </div>
+
+      <div class="card card-yellow">
+        <h3>Reading aloud is a load-bearing childhood ritual</h3>
+        <p>
+          The American Academy of Pediatrics formally recommends reading aloud
+          from infancy through elementary school. Decades of research
+          (Trelease, Whitehurst, others) show measurable, compounding gains in
+          vocabulary, literacy, and parent&ndash;child bonding for kids who
+          hear their parents read aloud regularly.
+        </p>
+        <span class="cite">AAP Literacy Promotion policy, 2014 (reaffirmed).</span>
+      </div>
+
+      <div class="card card-pink">
+        <h3>Parental absence has measurable costs</h3>
+        <p>
+          Studies of military families (RAND, Military Family Research
+          Institute) show parental separation measurably affects emotional
+          regulation, behavior, and school performance, and the effect
+          compounds with each tour. Pre-departure rituals that travel with
+          the child &mdash; recordings, letters, voice messages &mdash;
+          meaningfully mitigate this.
+        </p>
+        <span class="cite">RAND Corporation; Military Family Research Institute.</span>
+      </div>
+
+      <div class="card card-green">
+        <h3>Proof of concept already exists</h3>
+        <p>
+          United Through Reading (founded 1989) has helped deployed military
+          parents record themselves reading books to their kids for over
+          three decades, reaching hundreds of thousands of children. Letters
+          from those kids &mdash; read out at homecomings &mdash; make the case
+          better than any paper.
+        </p>
+        <span class="cite">unitedthroughreading.org</span>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 24px; padding: 24px; background: var(--white);">
+      <strong>What we&rsquo;re not.</strong>
+      <p style="margin-top: 8px; font-size: 0.95rem; line-height: 1.6;">
+        Moonjar is not an AI parent. AI never speaks as Mom or Dad. AI helps
+        the storyteller on the back end &mdash; suggesting branches when
+        they&rsquo;re tired, indexing characters across stories, generating
+        printable books &mdash; but the voice the child hears is always the
+        real one.
+      </p>
+    </div>
+  </section>
+
+  <!-- Why Now -->
+  <section class="section">
+    <h2>Why now</h2>
+    <p class="subtitle">Three trends made the wrong solutions and the right one obvious.</p>
+
+    <div class="grid-3">
+      <div class="card card-blue">
+        <h3>AI is finally good enough to disappear</h3>
+        <p style="font-size: 0.95rem;">
+          Server-side transcription and indexing are now accurate and
+          fast enough to run quietly in the background, so the parent
+          experience stays simple: tap record, talk, stop.
+        </p>
+      </div>
+      <div class="card card-pink">
+        <h3>Voice-cloning backlash</h3>
+        <p style="font-size: 0.95rem;">
+          Parents are uneasy about synthetic voices speaking to their
+          children. The market has tried voice clones; families have
+          recoiled.
+        </p>
+      </div>
+      <div class="card card-orange">
+        <h3>Screen-time reckoning</h3>
+        <p style="font-size: 0.95rem;">
+          Families are actively seeking voice-first tools that swap a glowing
+          screen at bedtime for a parent&rsquo;s actual voice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Jess -->
+  <section class="section" id="about">
+    <h2>Who&rsquo;s building this</h2>
+
+    <div class="card card-yellow team-card">
+      <div class="avatar">J</div>
+      <div>
+        <h3 style="font-size: 1.8rem; margin-bottom: 8px;">Jess Olsen</h3>
+        <p class="mono" style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 16px;">STANFORD GSB &middot; MSx &rsquo;26</p>
+        <p style="font-size: 1.05rem; line-height: 1.6;">
+          Military spouse turned pilot spouse. Mother of two. Husband is an
+          ALPA member pilot at Delta.
+        </p>
+        <p style="margin-top: 12px; font-size: 1.1rem;">
+          <strong>I built this because I live it.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section class="section" style="text-align: center;">
+    <div class="pull">
+      Every child deserves a library of their parent&rsquo;s real voice.
+    </div>
+    <div class="cta-row" style="margin-top: 32px;">
+      <a href="https://story-keeper-eight.vercel.app" class="btn btn-yellow">Try the app</a>
+      <a href="mailto:olsenj@stanford.edu" class="btn btn-secondary">Get in touch</a>
+    </div>
+  </section>
+
+  <footer>
+    Moonjar Stories &middot; built by Jess Olsen at Stanford GSB
+  </footer>
+</div>
+</body>
+</html>
