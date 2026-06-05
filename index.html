@@ -175,13 +175,20 @@
             align-items: start;
         }
 
+        .grid-sidebar-left {
+            position: sticky;
+            top: var(--space-md);
+            align-self: start;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
         .meta-list {
             list-style: none;
             display: flex;
             flex-direction: column;
             gap: var(--space-md);
-            position: sticky;
-            top: var(--space-md);
         }
 
         .meta-item {
@@ -462,7 +469,7 @@
             .marginalia-vertical { display: none; }
             .cv-entry { grid-template-columns: 1fr; gap: var(--space-xs); }
             .cv-date { padding-top: 0; }
-            .meta-list { position: static; }
+            .grid-sidebar-left { position: static; }
             .annotation { display: none; }
         }
     </style>
@@ -531,6 +538,17 @@
                         <a href="https://substack.com/" target="_blank" rel="noopener" class="btn-link">Substack <span class="arrow">&rarr;</span></a>
                     </li>
                 </ul>
+
+                <div class="index-box">
+                    <div class="index-box-title sys-text">Experience</div>
+                    <ul class="index-list exp-list">
+                        <li><span>Investor, GSB Impact Fund</span><span>2025</span></li>
+                        <li><span>Director, Valley Air District</span><span>2021&ndash;25</span></li>
+                        <li><span>Program Manager, Valley Air District</span><span>2019&ndash;21</span></li>
+                        <li><span>Principal, Doolittle Institute</span><span>2018&ndash;19</span></li>
+                        <li><span>Supervisor, Valley Air District</span><span>2014&ndash;18</span></li>
+                    </ul>
+                </div>
             </aside>
 
             <article class="grid-main">
@@ -729,17 +747,6 @@
                         <li><a href="#correspondence"><span>Correspondence</span><span>&sect;7.0</span></a></li>
                     </ul>
                     <div class="annotation" style="bottom: -26px; left: 0; transform: rotate(4deg);">Start at §2.0.</div>
-                </div>
-
-                <div class="index-box" style="margin-top: var(--space-md);">
-                    <div class="index-box-title sys-text">Experience</div>
-                    <ul class="index-list exp-list">
-                        <li><span>Investor, GSB Impact Fund</span><span>2025</span></li>
-                        <li><span>Director, Valley Air District</span><span>2021&ndash;25</span></li>
-                        <li><span>Program Manager, Valley Air District</span><span>2019&ndash;21</span></li>
-                        <li><span>Principal, Doolittle Institute</span><span>2018&ndash;19</span></li>
-                        <li><span>Supervisor, Valley Air District</span><span>2014&ndash;18</span></li>
-                    </ul>
                 </div>
             </aside>
         </main>
