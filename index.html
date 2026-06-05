@@ -176,12 +176,16 @@
         }
 
         .grid-sidebar-left {
-            position: sticky;
-            top: var(--space-md);
-            align-self: start;
+            align-self: stretch;
             display: flex;
             flex-direction: column;
             gap: var(--space-md);
+        }
+
+        /* Only this box stays pinned; everything else scrolls past it */
+        .grid-sidebar-left .index-box {
+            position: sticky;
+            top: var(--space-md);
         }
 
         .meta-list {
@@ -469,7 +473,7 @@
             .marginalia-vertical { display: none; }
             .cv-entry { grid-template-columns: 1fr; gap: var(--space-xs); }
             .cv-date { padding-top: 0; }
-            .grid-sidebar-left { position: static; }
+            .grid-sidebar-left .index-box { position: static; }
             .annotation { display: none; }
         }
     </style>
