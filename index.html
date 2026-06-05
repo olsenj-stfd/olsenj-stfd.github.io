@@ -234,6 +234,12 @@
             position: relative;
         }
 
+        /* Short-form entries (degrees, roles) sit closer together */
+        #education .cv-entry,
+        #leadership .cv-entry {
+            margin-bottom: var(--space-md);
+        }
+
         .cv-date {
             font-family: var(--font-sys);
             font-size: 0.7rem;
@@ -630,6 +636,16 @@
                         <div class="cv-content">
                             <h3>Investor, <span class="marker-bracket">Stanford GSB Impact Fund</span></h3>
                             <p>Evaluating early-stage ventures across innovation and social impact.</p>
+                        </div>
+                    </div>
+
+                    <div class="cv-entry">
+                        <div class="cv-date">Honor</div>
+                        <div class="cv-content">
+                            <div class="annotation" style="left: -104px; top: 4px; transform: rotate(-7deg);">A first!</div>
+                            <h3>The inaugural <span class="marker-circle">Kahn-Olsen Award</span> for Best Presentation</h3>
+                            <h4>Stanford GSB Impact Fund</h4>
+                            <p>The Impact Fund's first Best Presentation award, named for my partner and me and given to us as its inaugural recipients. A standard now carried forward in our names.</p>
                         </div>
                     </div>
 
