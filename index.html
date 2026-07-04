@@ -15,6 +15,7 @@
         :root {
             --bg-paper: #F4F1EA;
             --ink-cardinal: #8C1515;
+            --ink-text: #3D0C0C;
             --ink-faded: rgba(140, 21, 21, 0.6);
             --ink-micro: rgba(140, 21, 21, 0.4);
             --marker-dusty-pink: rgba(219, 114, 114, 0.7);
@@ -41,7 +42,7 @@
 
         body {
             background-color: var(--bg-paper);
-            color: var(--ink-cardinal);
+            color: var(--ink-text);
             font-family: var(--font-body);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -95,6 +96,25 @@
             padding: 4px;
             background: var(--bg-paper);
         }
+        .seal-qr[hidden] { display: none; }
+
+        .qr-toggle {
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-sys);
+            font-size: 0.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ink-faded);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 2px 4px;
+            white-space: nowrap;
+        }
+        .qr-toggle:hover { color: var(--ink-cardinal); }
 
         .header-flank {
             display: flex;
@@ -144,7 +164,7 @@
             margin: var(--space-lg) auto 0;
             text-align: center;
             font-style: italic;
-            color: var(--ink-cardinal);
+            color: var(--ink-text);
         }
 
         .hero-cta {
@@ -510,7 +530,8 @@
             </div>
 
             <div class="seal-container">
-                <img class="seal-qr" src="qr.png" alt="Scan to visit this page">
+                <img class="seal-qr" src="qr.png" alt="Scan to visit this page" id="qrImg" hidden>
+                <button type="button" class="qr-toggle" id="qrToggle" aria-label="Toggle QR code">show QR</button>
             </div>
 
             <div class="header-flank right sys-text">
@@ -575,11 +596,11 @@
             </aside>
 
             <article class="grid-main">
-                <!-- 01 THE RECORD -->
+                <!-- 01 COOL THINGS I'VE BUILT -->
                 <section class="cv-section" id="record">
                     <header class="cv-header">
                         <span class="cv-number">01</span>
-                        <h2 class="cv-title display">The Record</h2>
+                        <h2 class="cv-title display">Cool things I've built</h2>
                     </header>
 
                     <div class="cv-entry">
@@ -587,8 +608,8 @@
                         <div class="cv-content">
                             <h3><span class="marker-bracket">RegScout</span></h3>
                             <h4>Beta Testing</h4>
-                            <p>A tool built to help climate and impact founders and investors map the regulations, funding, and partners that matter to their venture.</p>
-                            <p>RegScout turns a plain-English description of your venture into a tailored map of the regulatory and funding landscape. Describe what you're building, and it surfaces the regulations you may need to comply with, the ongoing funding opportunities (grants, rebates, loans, and tax credits) worth pursuing, and the partners most relevant to your space.</p>
+                            <p>RegScout is regulatory and funding intelligence for mission-driven investors and founders.</p>
+                            <p>Point it at a portfolio (paste a list of company names, upload a CSV, or enter them by hand), and it researches each company, maps its regulatory exposure, and scores the book on non-dilutive capital within reach, regulatory climate, and policy dependency.</p>
                             <p>It's in beta, and <span class="marker-circle">I would love your feedback</span>. Take it for a spin and tell me what's useful and what's missing.</p>
                             <a href="https://beyond-markets.vercel.app/" target="_blank" rel="noopener" class="btn-outline" style="margin-top: 0.5rem;">Try RegScout &amp; share feedback</a>
                         </div>
@@ -634,10 +655,10 @@
                     </header>
 
                     <div class="cv-entry">
-                        <div class="cv-date">Expected June 2026</div>
+                        <div class="cv-date">2026</div>
                         <div class="cv-content">
-                            <h3>M.S. in Management</h3>
-                            <h4>Stanford Graduate School of Business</h4>
+                            <h3>Stanford Graduate School of Business</h3>
+                            <h4>M.S. in Management</h4>
                             <p>Certificate in Public Management and Social Innovation. Coursework: public policy ethics, political economy, impact investing, data &amp; decisions, strategy &amp; marketing.</p>
                             <a href="https://www.gsb.stanford.edu/programs/msx/life/students/voices/jessica-olsen" target="_blank" rel="noopener" class="btn-link">Student profile <span class="arrow">&rarr;</span></a>
                         </div>
@@ -646,16 +667,16 @@
                     <div class="cv-entry">
                         <div class="cv-date">2014</div>
                         <div class="cv-content">
-                            <h3>M.S. in Biomedical Engineering</h3>
-                            <h4>UC Irvine, Henry Samueli School of Engineering</h4>
+                            <h3>UC Irvine, Henry Samueli School of Engineering</h3>
+                            <h4>M.S. in Biomedical Engineering</h4>
                         </div>
                     </div>
 
                     <div class="cv-entry">
                         <div class="cv-date">2011</div>
                         <div class="cv-content">
-                            <h3>B.S. in Bioengineering</h3>
-                            <h4>UCLA, Henry Samueli School of Engineering</h4>
+                            <h3>UCLA, Henry Samueli School of Engineering</h3>
+                            <h4>B.S. in Bioengineering</h4>
                             <p>Publications in <em>Biomacromolecules</em> (co-first author, 2013):</p>
                             <p style="margin-top: 0.5rem;"><a href="https://pubs.acs.org/doi/abs/10.1021/bm400643p" target="_blank" rel="noopener" class="btn-link">Steric Effects in Peptide and Protein Exchange with Activated Disulfides <span class="arrow">&rarr;</span></a><br>
                             <a href="https://pubs.acs.org/doi/abs/10.1021/bm400169d" target="_blank" rel="noopener" class="btn-link">Synthesis of Photodegradable Macromers for Conjugation and Release of Bioactive Molecules <span class="arrow">&rarr;</span></a></p>
@@ -817,7 +838,7 @@
                 <div class="index-box">
                     <div class="index-box-title sys-text">System Index</div>
                     <ul class="index-list">
-                        <li><a href="#record"><span class="marker-circle">The Record</span><span>&sect;1.0</span></a></li>
+                        <li><a href="#record"><span class="marker-circle">Cool things I've built</span><span>&sect;1.0</span></a></li>
                         <li><a href="#education"><span>Education</span><span>&sect;2.0</span></a></li>
                         <li><a href="#leadership"><span>Leadership</span><span>&sect;3.0</span></a></li>
                         <li><a href="#convenings"><span>Convenings</span><span>&sect;4.0</span></a></li>
@@ -895,6 +916,18 @@
             window.addEventListener('resize', render);
             render();
         });
+
+        // Discreet QR show/hide toggle
+        (function () {
+            var img = document.getElementById('qrImg');
+            var btn = document.getElementById('qrToggle');
+            if (!img || !btn) return;
+            btn.addEventListener('click', function () {
+                var nowHidden = !img.hasAttribute('hidden');
+                if (nowHidden) { img.setAttribute('hidden', ''); btn.textContent = 'show QR'; }
+                else { img.removeAttribute('hidden'); btn.textContent = 'hide QR'; }
+            });
+        })();
     </script>
 </body>
 </html>
